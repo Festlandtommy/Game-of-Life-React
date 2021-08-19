@@ -51,19 +51,20 @@ const App: FC = () => {
             if (newI >= 0 && newI < ROWS && newJ >= 0 && newJ < COLUMNS) {
               neighbors += grid[newI][newJ];
             }
-
-            // game of life rules
-            if (neighbors < 2 || neighbors > 3) {
-              gridCopy[i][j] = 0;
-            } else if (grid[i][j] === 0 && neighbors === 3) {
-              gridCopy[i][j] = 1;
-            }
           })
+
+
+          // game of life rules
+          if (neighbors < 2 || neighbors > 3) {
+            gridCopy[i][j] = 0;
+          } else if (grid[i][j] === 0 && neighbors === 3) {
+            gridCopy[i][j] = 1;
+          }
         }
       }
     }));
 
-    setTimeout(run, 3100);
+    setTimeout(run, 100);
   }, []);
 
   return (
@@ -97,8 +98,8 @@ const App: FC = () => {
             style={{
               width: 20,
               height: 20,
-              backgroundColor: grid[rowIndex][colIndex] ? "yellow" : undefined,
-              border: "solid 1px black"
+              backgroundColor: grid[rowIndex][colIndex] ? "black" : undefined,
+              border: "solid 1px grey"
             }} />
         )))}
       </div>
