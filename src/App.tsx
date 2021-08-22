@@ -1,10 +1,15 @@
 import { FC, useCallback, useRef, useState } from 'react';
+import { Button, Dropdown } from 'antd';
 import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css';
 import { produce } from 'immer'
+import { Header } from './components'
+import { PatternMenu } from './components/menus'
+import { draw } from './utils'
 
-const ROWS = 25;
-const COLUMNS = 25;
+const ROWS = 50;
+const COLUMNS = 50;
 
 // Moore neighborhood
 const operations = [
@@ -18,24 +23,29 @@ const operations = [
   [0, -1],   // W
 ];
 
-const App: FC = () => {
-  // const [grid, setGrid] = useState<any[][]>(Array.from({ length: ROWS }).map(() => Array.from({ length: COLUMNS }).fill(0)))
-  const [grid, setGrid] = useState(() => {
-    const rows = [];
-    for (let i = 0; i < ROWS; i++) {
-      rows.push(Array.from(Array(COLUMNS), () => 0));
-    }
-    return rows;
-  });
+// patterns
+export enum Pattern {
+  None = 'None',
+  Block = 'Block',
+  Beehive = 'Beehive',
+  Loaf = 'Loaf',
+  Boat = 'Boat',
+  Tub = 'Tub',
+  Glider = 'Glider',
+}
 
+const App: FC = () => {
+  const [grid, setGrid] = useState<any[][]>(Array.from({ length: ROWS }).map(() => Array.from({ length: COLUMNS }).fill(0)))
   const [running, setRunning] = useState(false);
+  const [iterationTime, setIterationTime] = useState(100);
+  const [drawMode, setDrawMode] = useState<Pattern>(Pattern.None);
+  const myMenu = PatternMenu(setDrawMode);
 
   // make the value of running available in useCallback
   const runningRef = useRef(running);
   runningRef.current = running;
 
   const run = useCallback(() => {
-    console.log(runningRef.current);
     if (!runningRef.current) return;
 
     // simulate
@@ -64,23 +74,34 @@ const App: FC = () => {
       }
     }));
 
-    setTimeout(run, 100);
-  }, []);
+    setTimeout(run, iterationTime);
+  }, [iterationTime]);
 
   return (
     <>
-      <button
-        onClick={() => {
-          setRunning(!running);
-          if (!running) {
-            // state update might not be done in time
-            runningRef.current = true;
-            run();
-          }
-        }}
-      >
-        {running ? 'stop' : 'start'}
-      </button>
+      <Header running={running}>
+        <Button
+          type='primary'
+          onClick={() => {
+            console.log('click')
+            setRunning(!running);
+            if (!running) {
+              // state update might not be done in time
+              runningRef.current = true;
+              run();
+            }
+          }}
+        >
+          {running ? 'Stop' : 'Start'}
+        </Button>
+        <Dropdown
+          overlay={myMenu}
+          trigger={['click']}>
+          <Button>
+            Patterns
+          </Button>
+        </Dropdown>
+      </Header>
       <div style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${COLUMNS}, 20px)`
@@ -91,7 +112,7 @@ const App: FC = () => {
             onClick={() => {
               // we dont want to mutate, so we produce a copy
               const newGrid = produce(grid, gridCopy => {
-                gridCopy[rowIndex][colIndex] = gridCopy[rowIndex][colIndex] ? 0 : 1;
+                draw(gridCopy, [rowIndex, colIndex], drawMode);
               });
               setGrid(newGrid);
             }}

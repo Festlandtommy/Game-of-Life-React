@@ -1,0 +1,1 @@
+export { PatternMenu } from './patterns/component';
