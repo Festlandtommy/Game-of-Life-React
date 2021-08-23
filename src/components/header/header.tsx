@@ -7,9 +7,10 @@ const { Paragraph } = Typography;
 interface HeaderProps {
     children?: ReactNode;
     running?: boolean;
+    iteration?: number;
 }
 
-const Header: FC<HeaderProps> = ({ children, running }) => {
+const Header: FC<HeaderProps> = ({ children, running, iteration }) => {
 
     const content = (
         <>
@@ -41,7 +42,7 @@ const Header: FC<HeaderProps> = ({ children, running }) => {
         <PageHeader
             className="site-page-header"
             title="Conway's Game of Life"
-            tags={running ? <Tag color="blue">Running</Tag> : undefined}
+            tags={running ? <><Tag color="blue">Running</Tag><Tag>{iteration}</Tag></> : undefined}
             extra
         >
             <Content>

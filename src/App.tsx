@@ -43,6 +43,7 @@ export enum Pattern {
 const App: FC = () => {
   const [grid, setGrid] = useState<any[][]>(Array.from({ length: ROWS }).map(() => Array.from({ length: COLUMNS }).fill(0)))
   const [running, setRunning] = useState(false);
+  const [iteration, setIteration] = useState(0);
   const [iterationTime, setIterationTime] = useState(100);
   const [drawMode, setDrawMode] = useState<Pattern>(Pattern.None);
   const myMenu = PatternMenu(setDrawMode);
@@ -79,13 +80,13 @@ const App: FC = () => {
         }
       }
     }));
-
+    setIteration((before) => before + 1);
     setTimeout(run, iterationTime);
   }, [iterationTime]);
 
   return (
     <>
-      <Header running={running}>
+      <Header running={running} iteration={iteration}>
         <Button
           type='primary'
           onClick={() => {
