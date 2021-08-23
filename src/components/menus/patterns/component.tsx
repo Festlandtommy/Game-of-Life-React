@@ -23,13 +23,17 @@ const PatternMenu = (setterMethod: any): ReactElement<any> => {
                 <Menu.Item key="Boat">Boat</Menu.Item>
                 <Menu.Item key="Tub">Tub</Menu.Item>
             </SubMenu>
-            <SubMenu key='oscillators' title="Oscillators" disabled>
-                <Menu.Item key="o1">5d menu item</Menu.Item>
-                <Menu.Item key="o2">6th menu item</Menu.Item>
+            <SubMenu key='oscillators' title="Oscillators">
+                <Menu.Item key="Blinker">Blinker</Menu.Item>
+                <Menu.Item key="Toad">Toad</Menu.Item>
+                <Menu.Item key="Beacon">Beacon</Menu.Item>
+                <Menu.Item key="Pulsar">Pulsar</Menu.Item>
+                <Menu.Item key="o5">...</Menu.Item>
             </SubMenu>
             <SubMenu key='spaceships' title="Spaceships">
                 <Menu.Item key="Glider">Glider</Menu.Item>
-                <Menu.Item key="ss2">...</Menu.Item>
+                <Menu.Item key="LWSS">Light Spaceship</Menu.Item>
+                <Menu.Item key="ss3">...</Menu.Item>
             </SubMenu>
         </Menu>
     )
