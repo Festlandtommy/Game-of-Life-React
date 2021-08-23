@@ -1,6 +1,5 @@
 import { FC, useCallback, useRef, useState } from 'react';
 import { Button, Dropdown } from 'antd';
-import logo from './logo.svg';
 import './App.css';
 import 'antd/dist/antd.css';
 import { produce } from 'immer'
@@ -108,6 +107,9 @@ const App: FC = () => {
             Patterns
           </Button>
         </Dropdown>
+        {drawMode !== Pattern.None && <Button onClick={() => setDrawMode(Pattern.None)}>
+          Clear Pattern
+        </Button>}
       </Header>
       <div style={{
         display: 'grid',

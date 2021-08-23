@@ -1,12 +1,7 @@
 import { Menu } from 'antd';
-import React, { FC, ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 const { SubMenu } = Menu;
-
-interface PatternMenuProps {
-    setterMethod: (a: any) => void;
-}
-
 
 const PatternMenu = (setterMethod: any): ReactElement<any> => {
     const handleMenuClick = ({ key }: { key: string }) => {
