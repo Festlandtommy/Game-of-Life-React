@@ -1,6 +1,8 @@
-import { Button, PageHeader, Row, Tag } from "antd";
+import { Button, PageHeader, Row, Tag, Typography } from "antd";
 import { FC, ReactNode } from "react";
 import './styles.css'
+
+const { Paragraph } = Typography;
 
 interface HeaderProps {
     children?: ReactNode;
@@ -11,6 +13,12 @@ const Header: FC<HeaderProps> = ({ children, running }) => {
 
     const content = (
         <>
+            <Paragraph>
+                The Game of Life is a cellular automaton devised by the British mathematician John Horton Conway in 1970.
+            </Paragraph>
+            <Paragraph>
+                It is Turing complete and can simulate a universal constructor or any other Turing machine.
+            </Paragraph>
             <div>
                 {children}
             </div>
