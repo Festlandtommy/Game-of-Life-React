@@ -1,5 +1,5 @@
 import { PageHeader, Row, Tag, Typography } from "antd";
-import { FC, ReactNode } from "react";
+import { FC, memo, ReactNode } from "react";
 import './styles.css'
 
 const { Paragraph } = Typography;
@@ -52,4 +52,9 @@ const Header: FC<HeaderProps> = ({ children, running, iteration }) => {
     )
 }
 
-export { Header };
+const memoizedHeader = memo(Header, (prevProps, nextProps) => {
+    console.log(nextProps);
+    return false;
+})
+
+export { memoizedHeader as Header };

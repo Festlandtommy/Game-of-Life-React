@@ -1,4 +1,4 @@
-import { Pattern } from '../App'
+import { Pattern } from './patterns';
 
 
 // mutates the gridCopy to draw pattern at the cursor coordinates
