@@ -7,14 +7,12 @@ import { CellGrid } from './components/game/cell-grid';
 import { PatternMenu } from './components/menus';
 import { Pattern } from './utils/patterns';
 
-const RunningContext = createContext(false);
+export const RunningContext = createContext(false);
 
 const App: FC = () => {
   const [running, setRunning] = useState(false);
-  // const [iteration, setIteration] = useState(0);
-  // const [iterationTime, setIterationTime] = useState(100);
-  const [drawMode, setDrawMode] = useState<Pattern>(Pattern.LWSS);
-  const myMenu = PatternMenu(setDrawMode);
+  const [drawMode, setDrawMode] = useState<Pattern>(Pattern.None);
+  const menu = PatternMenu(setDrawMode);
 
   // make the value of running available in useCallback
   const runningRef = useRef(running);
@@ -37,7 +35,7 @@ const App: FC = () => {
           {running ? 'Stop' : 'Start'}
         </Button>
         <Dropdown
-          overlay={myMenu}
+          overlay={menu}
           trigger={['click']}>
           <Button>
             Patterns
@@ -47,7 +45,7 @@ const App: FC = () => {
           Clear Pattern
         </Button>}
       </Header>
-      <CellGrid drawMode={drawMode} running={running} />
+      <CellGrid drawMode={drawMode} />
     </RunningContext.Provider>
   );
 }

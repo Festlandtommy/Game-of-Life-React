@@ -1,16 +1,18 @@
 import { PageHeader, Row, Tag, Typography } from "antd";
-import { FC, memo, ReactNode } from "react";
+import { FC, memo, ReactNode, useContext } from "react";
+import { RunningContext } from "../../App";
 import './styles.css'
+
 
 const { Paragraph } = Typography;
 
 interface HeaderProps {
     children?: ReactNode;
-    running?: boolean;
     iteration?: number;
 }
 
-const Header: FC<HeaderProps> = ({ children, running, iteration }) => {
+const Header: FC<HeaderProps> = ({ children, iteration }) => {
+    const running = useContext(RunningContext)
 
     const content = (
         <>

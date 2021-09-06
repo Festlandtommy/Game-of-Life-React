@@ -1,5 +1,6 @@
 import { produce } from "immer";
-import { FC, useCallback, useEffect, useRef, useState } from "react";
+import { FC, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { RunningContext } from "../../App";
 import { draw } from "../../utils";
 import { operations } from '../../utils/operations';
 import { Pattern } from "../../utils/patterns";
@@ -9,14 +10,12 @@ export const COLUMNS = 50;
 
 export interface CellGridProps {
   drawMode: Pattern;
-  running: boolean;
 }
 
-const CellGrid: FC<CellGridProps> = ({ drawMode, running }) => {
+const CellGrid: FC<CellGridProps> = ({ drawMode }) => {
   const [grid, setGrid] = useState<any[][]>(Array.from({ length: ROWS }).map(() => Array.from({ length: COLUMNS }).fill(0)))
-  // const [iteration, setIteration] = useState(0);
   const [iterationTime, setIterationTime] = useState(100);
-  // const [running, setRunning] = useState(false);
+  const running = useContext(RunningContext);
 
   // make the value of running available in useCallback
   const runningRef = useRef(running);
@@ -49,7 +48,7 @@ const CellGrid: FC<CellGridProps> = ({ drawMode, running }) => {
         }
       }
     }));
-    // setIteration((before) => before + 1);
+    // setIteration((before: number) => before + 1);
     setTimeout(simulate, iterationTime);
   }, [iterationTime]);
 
