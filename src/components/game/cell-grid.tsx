@@ -54,7 +54,7 @@ const CellGrid: FC<CellGridProps> = ({ drawMode }) => {
 
   useEffect(() => {
     if (running) simulate();
-  }, [running]);
+  }, [running, simulate]);
 
 
   return (
