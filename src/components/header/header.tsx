@@ -1,5 +1,5 @@
 import { PageHeader, Row, Tag, Typography } from "antd";
-import { FC, memo, ReactNode, useContext } from "react";
+import { FC, ReactNode, useContext } from "react";
 import { RunningContext } from "../../App";
 import './styles.css'
 
@@ -8,10 +8,9 @@ const { Paragraph } = Typography;
 
 interface HeaderProps {
     children?: ReactNode;
-    iteration?: number;
 }
 
-const Header: FC<HeaderProps> = ({ children, iteration }) => {
+const Header: FC<HeaderProps> = ({ children }) => {
     const running = useContext(RunningContext)
 
     const content = (
@@ -44,7 +43,7 @@ const Header: FC<HeaderProps> = ({ children, iteration }) => {
         <PageHeader
             className="site-page-header"
             title="Conway's Game of Life"
-            tags={running ? <><Tag color="blue">Running</Tag><Tag>{iteration}</Tag></> : undefined}
+            tags={running ? <><Tag color="blue">Running</Tag></> : undefined}
             extra
         >
             <Content>
@@ -54,9 +53,4 @@ const Header: FC<HeaderProps> = ({ children, iteration }) => {
     )
 }
 
-const memoizedHeader = memo(Header, (prevProps, nextProps) => {
-    console.log(nextProps);
-    return false;
-})
-
-export { memoizedHeader as Header };
+export { Header };
