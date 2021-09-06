@@ -10,6 +10,7 @@ export enum Pattern {
     Blinker = 'Blinker',
     Toad = 'Toad',
     Beacon = 'Beacon',
+    Pulsar = 'Pulsar',
     // ships
     Glider = 'Glider',
     LWSS = 'LWSS'
