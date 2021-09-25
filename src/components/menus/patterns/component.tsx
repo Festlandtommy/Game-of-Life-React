@@ -5,7 +5,6 @@ const { SubMenu } = Menu;
 
 const PatternMenu = (setterMethod: any): ReactElement<any> => {
     const handleMenuClick = ({ key }: { key: string }) => {
-        console.log(key);
         setterMethod(key);
     }
 

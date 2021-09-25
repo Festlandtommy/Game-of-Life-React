@@ -24,7 +24,6 @@ const App: FC = () => {
         <Button
           type='primary'
           onClick={() => {
-            console.log('click')
             setRunning(!running);
             if (!running) {
               // state update might not be done in time
