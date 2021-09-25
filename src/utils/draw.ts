@@ -158,6 +158,32 @@ export const draw = (gridCopy: any[][], coordinates: [i: number, j: number], dra
             gridCopy[i + 12][j + 9] = 1;
             gridCopy[i + 12][j + 10] = 1;
         },
+        [Pattern.PentaDecathlon]: () => {
+            gridCopy[i][j] = 1;
+            gridCopy[i][j + 1] = 1;
+            gridCopy[i][j + 2] = 1;
+            gridCopy[i + 1][j + 1] = 1;
+            gridCopy[i + 2][j + 1] = 1;
+            gridCopy[i + 3][j] = 1;
+            gridCopy[i + 3][j + 1] = 1;
+            gridCopy[i + 3][j + 2] = 1;
+
+            gridCopy[i + 5][j] = 1;
+            gridCopy[i + 5][j + 1] = 1;
+            gridCopy[i + 5][j + 2] = 1;
+            gridCopy[i + 6][j] = 1;
+            gridCopy[i + 6][j + 1] = 1;
+            gridCopy[i + 6][j + 2] = 1;
+
+            gridCopy[i + 8][j] = 1;
+            gridCopy[i + 8][j + 1] = 1;
+            gridCopy[i + 8][j + 2] = 1;
+            gridCopy[i + 8 + 1][j + 1] = 1;
+            gridCopy[i + 8 + 2][j + 1] = 1;
+            gridCopy[i + 8 + 3][j] = 1;
+            gridCopy[i + 8 + 3][j + 1] = 1;
+            gridCopy[i + 8 + 3][j + 2] = 1;
+        },
         // X X
         //  XX
         //  X
@@ -183,7 +209,34 @@ export const draw = (gridCopy: any[][], coordinates: [i: number, j: number], dra
             gridCopy[i + 3][j + 3] = 1;
             gridCopy[i + 3][j + 4] = 1;
         },
-
+        [Pattern.MWSS]: () => {
+            gridCopy[i][j + 1] = 1;
+            gridCopy[i][j + 2] = 1;
+            gridCopy[i][j + 3] = 1;
+            gridCopy[i][j + 4] = 1;
+            gridCopy[i][j + 5] = 1;
+            gridCopy[i + 1][j] = 1;
+            gridCopy[i + 1][j + 5] = 1;
+            gridCopy[i + 2][j + 5] = 1;
+            gridCopy[i + 3][j + 4] = 1;
+            gridCopy[i + 3][j] = 1;
+            gridCopy[i + 4][j + 2] = 1;
+        },
+        [Pattern.HWSS]: () => {
+            gridCopy[i][j + 1] = 1;
+            gridCopy[i][j + 2] = 1;
+            gridCopy[i][j + 3] = 1;
+            gridCopy[i][j + 4] = 1;
+            gridCopy[i][j + 5] = 1;
+            gridCopy[i][j + 6] = 1;
+            gridCopy[i + 1][j] = 1;
+            gridCopy[i + 1][j + 6] = 1;
+            gridCopy[i + 2][j + 6] = 1;
+            gridCopy[i + 3][j + 5] = 1;
+            gridCopy[i + 3][j] = 1;
+            gridCopy[i + 4][j + 2] = 1;
+            gridCopy[i + 4][j + 3] = 1;
+        },
     }
     drawPattern[drawMode]();
 }

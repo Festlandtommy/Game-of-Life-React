@@ -11,7 +11,10 @@ export enum Pattern {
     Toad = 'Toad',
     Beacon = 'Beacon',
     Pulsar = 'Pulsar',
+    PentaDecathlon = 'PentaDecathlon',
     // ships
     Glider = 'Glider',
-    LWSS = 'LWSS'
+    LWSS = 'LWSS',
+    MWSS = 'MWSS',
+    HWSS = 'HWSS'
 }

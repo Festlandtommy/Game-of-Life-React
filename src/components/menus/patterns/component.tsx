@@ -23,12 +23,13 @@ const PatternMenu = (setterMethod: any): ReactElement<any> => {
                 <Menu.Item key="Toad">Toad</Menu.Item>
                 <Menu.Item key="Beacon">Beacon</Menu.Item>
                 <Menu.Item key="Pulsar">Pulsar</Menu.Item>
-                <Menu.Item key="o5">...</Menu.Item>
+                <Menu.Item key="PentaDecathlon">Penta-Decatholn</Menu.Item>
             </SubMenu>
             <SubMenu key='spaceships' title="Spaceships">
                 <Menu.Item key="Glider">Glider</Menu.Item>
                 <Menu.Item key="LWSS">Light Spaceship</Menu.Item>
-                <Menu.Item key="ss3">...</Menu.Item>
+                <Menu.Item key="MWSS">Medium Spaceship</Menu.Item>
+                <Menu.Item key="HWSS">Heavy Spaceship</Menu.Item>
             </SubMenu>
         </Menu>
     )
